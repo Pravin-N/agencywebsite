@@ -67,9 +67,7 @@ const useStyles = makeStyles((theme) => ({
     },
     copyright: {
         marginTop: "2rem",
-        borderTop: "1px",
-        borderT
-        
+        borderTop: "1px        
     }
 }))
 
