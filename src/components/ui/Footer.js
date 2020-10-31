@@ -2,13 +2,17 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import {Link} from 'react-router-dom'
+import Hidden from "@material-ui/core/Hidden"
+
 
 import footerbackground from "../../assets/footerbackground.png"
 import footercompanylogo from "../../assets/footercompanylogo.svg";
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
 
 
 
@@ -43,11 +47,27 @@ const useStyles = makeStyles((theme) => ({
             color: theme.palette.common.green,
         }
     },
+    icon: {
+        color: theme.palette.common.white,
+        fontFamily: "Arial",
+        fontSize: "0.75rem",
+        fontWeight: "Bold",
+        textDecoration: "none",
+        "&:hover": {
+            color: theme.palette.common.green,
+        }
+    },
     mainContainer: {
-        // position: "absolute"
+        paddingTop: "1rem",
     },
     gridItem: {
         margin: "3rem",
+        [theme.breakpoints.down("lg")]: {
+            margin: "2rem",
+        },
+        [theme.breakpoints.down("md")]: {
+            margin: "1rem",
+        },
     },
     text: {
         color: "white",
@@ -65,9 +85,19 @@ const useStyles = makeStyles((theme) => ({
             color: theme.palette.common.green,
         }
     },
-    copyright: {
-        marginTop: "2rem",
-        borderTop: "1px        
+    footerLine: {
+        borderTopWidth: "1px",
+        borderTopStyle: "solid",
+        borderTopColor: "#444352",
+        width: "80%",
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
+        marginTop: "1rem"
+    },
+    footerText: {
+        color: "white",
+        fontFamily: "Arial",
+        fontSize: "0.75rem",
     }
 }))
 
@@ -82,32 +112,35 @@ export default function Footer({value, setValue, selectedIndex, setSelectedIndex
                         <img src={footercompanylogo} className={classes.logo} alt="iframe webdesign company logo footer"
                             />
                     </Grid>
+                    <Hidden smDown>
                     <Grid item className={classes.text}>
                         Web design agency that delivers results!
                     </Grid>
+                    </Hidden>
                     <Grid item className={classes.link}>
                         <Grid container spacing={2}>
                             {/* Link to social media */}
-                            <Grid item component={Link} to="/" onClick={() => setValue(0)} className={classes.link}>
+                            <Grid item component={"a"} href="https://www.facebook.com" rel="noopener noreferrer" target="_blank" className={classes.link}>
                             <FacebookIcon />
                             </Grid>
                             {/* Link to social media */}
-                            <Grid item component={Link} to="/" onClick={() => setValue(0)} className={classes.link}>
+                            <Grid item component={"a"} href="https://www.instagram.com" rel="noopener noreferrer" target="_blank" className={classes.link}>
                                 <InstagramIcon />
                             </Grid>
                             {/* link to social media */}
-                            <Grid item component={Link} to="/" onClick={() => setValue(0)} className={classes.link}>
+                            <Grid item component={"a"} href="https://www.twitter.com" rel="noopener noreferrer" target="_blank" className={classes.link}>
                             <TwitterIcon />
                             </Grid>                        
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
+            <Hidden smDown>
             <Grid item className={classes.gridItem}>
                 <Grid container direction="column" spacing={2}>
                     <Grid item>
                         <Grid container spacing={2}>
-                            <Grid item className={classes.head} justify="center" xs={12}>
+                            <Grid item className={classes.head}  xs={12}>
                                 Quick Links
                             </Grid>
                             <Grid item xs={6}>
@@ -152,45 +185,50 @@ export default function Footer({value, setValue, selectedIndex, setSelectedIndex
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item className={classes.gridItem}>
+            </Hidden>
+            {/* <Grid item className={classes.gridItem}>
                 <Grid container direction="column" spacing={2}>
                     <Grid item component={Link} to="/dublin-web-design-blog" onClick={() => setValue(4)} className={classes.head}>
                         Recent Blog Posts
                     </Grid>
-                    {/* Link to blog post */}
+                    Link to blog post
                     <Grid item component={Link} to="/dublin-web-design-blog" onClick={() => setValue(4)} className={classes.link}>
                         Post1
                     </Grid>
-                    {/* Link to blog post */}
+                    Link to blog post
                     <Grid item component={Link} to="/dublin-web-design-blog" onClick={() => setValue(4)} className={classes.link}>
                         Post2
                     </Grid>
-                    {/* Link to blog post */}
+                    Link to blog post
                     <Grid item component={Link} to="/dublin-web-design-blog" onClick={() => setValue(4)} className={classes.link}>
                         Post3
                     </Grid>
                 </Grid>
-            </Grid>
+            </Grid> */}
             <Grid item className={classes.gridItem}>
                 <Grid container direction="column" spacing={2}>
                     <Grid item component={Link} to="/contact" onClick={() => setValue(5)} className={classes.head}>
                         Get in Touch
                     </Grid>
+                    {/* Fix the icons */}
                     <Grid item className={classes.link}>
-                        Location: Whitehall Rd, Rathfarnham, Dublin 14
+                        <LocationOnIcon className={classes.icon}/> Location: Whitehall Rd, Rathfarnham, Dublin 14
                     </Grid>
                     <Grid item className={classes.link}>
-                        Phone: (353) 0899870468
+                        <PhoneIcon className={classes.icon}/> Phone: (353) 0899870468
                     </Grid>
                     <Grid item className={classes.link}>
-                        Email: info@iframewebdesign.com
+                    <EmailIcon className={classes.icon}/> Email: info@iframewebdesign.com
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
-        <Grid container direction="column">
-            <Grid item className={classes.copyright} xs={12}>
-
+        <Grid container justify="center">
+            <Grid item className={classes.footerLine}>
+                <Grid container justify="space-between">
+                    <Grid item className={classes.footerText}>Copyright @2020. All rights reserved.</Grid>
+                    <Grid item className={classes.footerText}>Dublin, Ireland</Grid>
+                </Grid>
             </Grid>
         </Grid>
         </footer></React.Fragment>
