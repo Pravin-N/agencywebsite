@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.common.footer,
         backgroundImage: `url(${footerbackground})`,
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: "scroll",
         backgroundPosition: "center",
         width: "100%",
         color: theme.palette.common.white,
